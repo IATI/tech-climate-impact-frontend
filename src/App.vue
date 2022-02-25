@@ -1,12 +1,14 @@
 <script setup>
 // This starter template is using Vue 3 <script setup> SFCs
 // Check out https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup
-import HelloWorld from "./components/HelloWorld.vue";
+import MainHeader from "./components/MainHeader.vue";
 </script>
 
 <template>
-  <div class="flex justify-center">
-    <img class="mt-16" alt="Vue logo" src="./assets/logo.png" />
+  <MainHeader />
+  <div class="container mx-auto">
+    <!-- route outlet -->
+    <!-- component matched by the route will render here -->
+    <router-view></router-view>
   </div>
-  <HelloWorld msg="Hello Vue 3 + Vite" />
 </template>
