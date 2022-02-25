@@ -6,9 +6,9 @@ on:
       - "**/README.md" # don't run on README.md file updates anywhere in repo
       - "**/dependabot.yml"
     branches:
-      - develop
-  schedule:
-    - cron: "27 04 * * *" # 0424am daily
+      - notreadyyet
+  # schedule:
+  #   - cron: "27 04 * * *" # 0424am daily
 
 env:
   STORAGE_ACCOUNT_NAME: savuetemplate # storage account name
