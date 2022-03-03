@@ -16,7 +16,7 @@ const route = useRoute();
       />
     </a>
     <a href="/">
-      <h1 class="flex justify-center text-3xl">
+      <h1 class="flex justify-center text-4xl font-extrabold">
         IATI Technical Climate Impact Dashboard
       </h1>
     </a>
