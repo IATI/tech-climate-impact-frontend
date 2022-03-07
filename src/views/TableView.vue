@@ -28,7 +28,8 @@
 
 <script>
 import { compareAsc, format } from "date-fns";
-const API_URL = "https://func-tci-services.azurewebsites.net/api/metrics";
+const API_URL =
+  "https://func-tci-services.azurewebsites.net/api/metrics?enddate=2022-03-06&startdate=2022-03-02";
 export default {
   data: () => ({
     metricData: [],
@@ -65,8 +66,14 @@ export default {
   methods: {
     async fetchData() {
       const url = `${API_URL}`;
-      this.metricData = (await (await fetch(url)).json()).sort(
-        ({ endDate: a }, { endDate: b }) => compareAsc(new Date(a), new Date(b))
+      this.metricData = (
+        await (
+          await fetch(url, {
+            headers: { "x-functions-key": import.meta.env.VUE_ENV_API_KEY },
+          })
+        ).json()
+      ).sort(({ endDate: a }, { endDate: b }) =>
+        compareAsc(new Date(a), new Date(b))
       );
     },
     formatDate(dateStr) {
