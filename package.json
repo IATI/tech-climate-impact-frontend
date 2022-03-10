@@ -19,7 +19,7 @@
     "date-fns": "^2.28.0",
     "vue": "^3.2.25",
     "vue-chart-3": "^3.1.2",
-    "vue-router": "^4.0.12"
+    "vue-router": "^4.0.14"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^2.2.0",
