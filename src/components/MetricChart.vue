@@ -2,7 +2,7 @@
   <LineChart
     v-for="metricType in metricTypes"
     :key="metricType"
-    :chart-data="testData[metricType]"
+    :chart-data="data[metricType]"
     :options="options[metricType]"
   />
 </template>
@@ -69,7 +69,7 @@ export default defineComponent({
         return acc;
       }, {});
     },
-    testData() {
+    data() {
       return this.metricTypes.reduce((acc, type) => {
         acc[type] = {
           datasets: [

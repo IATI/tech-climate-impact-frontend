@@ -1,32 +1,62 @@
 <template>
+  <div class="flex flex-row-reverse m-2">
+    <select v-model="daysBack" class="m-2 p-1 border-grey-600 border-2 rounded">
+      <option value="3">3 Days Back</option>
+      <option value="7">7 Days Back</option>
+      <option value="30">30 Days Back</option>
+    </select>
+    <Datepicker
+      v-model="selectedDate"
+      :upper-limit="upperLimit"
+      class="m-2 p-1 border-grey-600 border-2 rounded"
+    />
+  </div>
   <MetricTable v-if="$route.name === 'table'" :metric-data="metricData" />
   <MetricChart v-if="$route.name === 'chart'" :metric-data="metricData" />
 </template>
 
 <script>
-import { compareAsc } from "date-fns";
+import Datepicker from "vue3-datepicker";
+import { compareAsc, sub, add } from "date-fns";
 import MetricTable from "../components/MetricTable.vue";
 import MetricChart from "../components/MetricChart.vue";
 
-const API_URL =
-  "https://func-tci-services.azurewebsites.net/api/metrics?enddate=2022-03-14&startdate=2022-03-10";
+const API_URL = import.meta.env.VUE_ENV_API_URL;
+
 export default {
   components: {
     MetricTable,
     MetricChart,
+    Datepicker,
   },
   data: () => ({
     metricData: [],
     pathName: "",
+    selectedDate: "",
+    daysBack: 7,
+    upperLimit: "",
   }),
+  watch: {
+    daysBack: "fetchData",
+    selectedDate: "fetchData",
+  },
   created() {
     this.pathName = this.$route.name;
+    const yesterday = sub(new Date(), { days: 1 });
+    this.selectedDate = yesterday;
+    this.upperLimit = yesterday;
     // fetch on init
     this.fetchData();
   },
   methods: {
     async fetchData() {
-      const url = `${API_URL}`;
+      const url = new URL(API_URL);
+      url.searchParams.set("enddate", add(this.selectedDate, { days: 1 }));
+      url.searchParams.set(
+        "startdate",
+        sub(this.selectedDate, { days: this.daysBack - 1 })
+      );
+
       this.metricData = (
         await (
           await fetch(url, {

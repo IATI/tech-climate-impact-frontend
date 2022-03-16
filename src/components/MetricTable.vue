@@ -1,7 +1,14 @@
 <template>
   <h2 class="text-3xl font-serif font-bold p-4">TCI Metrics Table</h2>
   <div class="text-gray-800">
-    <div class="grid grid-cols-6 bg-gray-200 border-b-2 border-grey-500">
+    <div
+      class="grid bg-gray-200 border-b-2 border-grey-500"
+      :class="{
+        'grid-cols-12': dates.size === 10,
+        'grid-cols-9': dates.size === 7,
+        'grid-cols-5': dates.size === 3,
+      }"
+    >
       <div class="invisible">Date:</div>
       <div class="invisible"></div>
       <div v-for="date in dates" :key="date" class="text-lg font-bold p-2 m-2">
@@ -11,7 +18,12 @@
     <div
       v-for="metricType in metricTypes"
       :key="metricType"
-      class="grid grid-cols-6 items-center p-4 border-b-2 border-grey-500 bg-white transition duration-300 ease-in-out hover:bg-gray-100"
+      class="grid items-center p-4 border-b-2 border-grey-500 bg-white transition duration-300 ease-in-out hover:bg-gray-100"
+      :class="{
+        'grid-cols-12': dates.size === 10,
+        'grid-cols-9': dates.size === 7,
+        'grid-cols-5': dates.size === 3,
+      }"
     >
       <div class="col-span-2 mr-4 text-lg font-bold">
         {{ metricMeta[metricType].displayName }}
@@ -50,12 +62,16 @@ export default {
       }, {});
     },
     dates() {
-      return this.metricData.reduce((acc, val) => {
+      const allDates = this.metricData.reduce((acc, val) => {
         if (!acc.has(val.endDate)) {
           acc.add(val.endDate);
         }
         return acc;
       }, new Set());
+      if (allDates.size > 10) {
+        return new Set(allDates.values()[(0, 9)]);
+      }
+      return allDates;
     },
   },
 
