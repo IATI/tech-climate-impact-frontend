@@ -27,13 +27,12 @@
 </template>
 
 <script>
-import { compareAsc, format } from "date-fns";
-const API_URL =
-  "https://func-tci-services.azurewebsites.net/api/metrics?enddate=2022-03-06&startdate=2022-03-02";
+import { format } from "date-fns";
 export default {
-  data: () => ({
-    metricData: [],
-  }),
+  name: "MetricTable",
+  props: {
+    metricData: { type: Array, default: () => [] },
+  },
   computed: {
     metricTypes() {
       return this.metricData.reduce((acc, val) => {
@@ -59,23 +58,8 @@ export default {
       }, new Set());
     },
   },
-  created() {
-    // fetch on init
-    this.fetchData();
-  },
+
   methods: {
-    async fetchData() {
-      const url = `${API_URL}`;
-      this.metricData = (
-        await (
-          await fetch(url, {
-            headers: { "x-functions-key": import.meta.env.VUE_ENV_API_KEY },
-          })
-        ).json()
-      ).sort(({ endDate: a }, { endDate: b }) =>
-        compareAsc(new Date(a), new Date(b))
-      );
-    },
     formatDate(dateStr) {
       return format(new Date(dateStr), "dd/MM/yyyy");
     },

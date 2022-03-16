@@ -1,11 +1,10 @@
 import { createWebHistory, createRouter } from "vue-router";
-import ChartView from "../views/ChartView.vue";
-import TableView from "../views/TableView.vue";
+import DataView from "../views/DataView.vue";
 import MethodologyView from "../views/MethodologyView.vue";
 
 const routes = [
-  { path: "/", name: "chart", component: ChartView },
-  { path: "/table", name: "table", component: TableView },
+  { path: "/", name: "chart", component: DataView },
+  { path: "/table", name: "table", component: DataView },
   { path: "/methodology", name: "methodology", component: MethodologyView },
 ];
 
