@@ -12,7 +12,11 @@
     />
   </div>
   <MetricTable v-if="$route.name === 'table'" :metric-data="metricData" />
-  <MetricChart v-if="$route.name === 'chart'" :metric-data="metricData" />
+  <MetricChart
+    v-if="$route.name === 'chart'"
+    :metric-data="metricData"
+    :loading="loading"
+  />
 </template>
 
 <script>
@@ -31,22 +35,23 @@ export default {
   },
   data: () => ({
     metricData: [],
-    pathName: "",
     selectedDate: "",
     daysBack: 7,
     upperLimit: "",
+    loading: false,
   }),
   watch: {
     daysBack: "fetchData",
     selectedDate: "fetchData",
   },
-  created() {
-    this.pathName = this.$route.name;
+  async created() {
+    this.loading = true;
     const yesterday = sub(new Date(), { days: 1 });
     this.selectedDate = yesterday;
     this.upperLimit = yesterday;
     // fetch on init
-    this.fetchData();
+    await this.fetchData();
+    this.loading = false;
   },
   methods: {
     async fetchData() {
