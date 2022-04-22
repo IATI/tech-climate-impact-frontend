@@ -1,20 +1,15 @@
 <template>
-  <div v-for="metricType in metricTypes" :key="metricType">
-    <LineChart
-      v-if="!loading"
-      :chart-data="data[metricType]"
-      :options="options[metricType]"
-    />
-    <div
-      v-if="loading"
-      style="border-top-color: transparent"
-      class="w-12 h-12 p-2 border-4 border-black border-dotted rounded-full animate-spin"
-    ></div>
-  </div>
+  <!-- <div v-for="metricType in metricTypes" :key="metricType"> -->
+  <LineChart
+    ref="lineRef"
+    :chart-data="data['cost']"
+    :options="options['cost']"
+  />
+  <!-- </div> -->
 </template>
 
 <script>
-import { computed, defineComponent } from "vue";
+import { computed, defineComponent, onMounted, onUpdated, ref } from "vue";
 import { LineChart } from "vue-chart-3";
 import { Chart, registerables } from "chart.js";
 Chart.register(...registerables);
@@ -94,7 +89,20 @@ export default defineComponent({
       }, {});
     });
 
-    return { data, metricTypes, options };
+    const lineRef = ref();
+    onMounted(() => {
+      console.log(`onMounted:`);
+      console.log(lineRef.value);
+      lineRef.value.update();
+    });
+
+    onUpdated(() => {
+      console.log(`onUpdated:`);
+      console.log(lineRef.value);
+      lineRef.value.update();
+    });
+
+    return { data, metricTypes, options, lineRef };
   },
 });
 </script>
