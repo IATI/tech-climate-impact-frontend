@@ -1,15 +1,15 @@
 <template>
-  <!-- <div v-for="metricType in metricTypes" :key="metricType"> -->
-  <LineChart
-    ref="lineRef"
-    :chart-data="data['cost']"
-    :options="options['cost']"
-  />
-  <!-- </div> -->
+  <div v-for="metricType in metricTypes" :key="metricType">
+    <LineChart
+      ref="lineRef"
+      :chart-data="data[metricType]"
+      :options="options[metricType]"
+    />
+  </div>
 </template>
 
 <script>
-import { computed, defineComponent, onMounted, onUpdated, ref } from "vue";
+import { computed, defineComponent } from "vue";
 import { LineChart } from "vue-chart-3";
 import { Chart, registerables } from "chart.js";
 Chart.register(...registerables);
@@ -43,10 +43,6 @@ export default defineComponent({
       metricTypes.value.reduce((acc, type) => {
         acc[type] = {
           responsive: true,
-          parsing: {
-            xAxisKey: "endDate",
-            yAxisKey: "value",
-          },
           plugins: {
             legend: {
               position: "top",
@@ -78,10 +74,15 @@ export default defineComponent({
     const data = computed(() => {
       return metricTypes.value.reduce((acc, type) => {
         acc[type] = {
+          labels: props.metricData
+            .filter((data) => data.type === type)
+            .map((data) => data.endDate),
           datasets: [
             {
               label: type,
-              data: props.metricData.filter((data) => data.type === type),
+              data: props.metricData
+                .filter((data) => data.type === type)
+                .map((data) => data.value),
             },
           ],
         };
@@ -89,20 +90,7 @@ export default defineComponent({
       }, {});
     });
 
-    const lineRef = ref();
-    onMounted(() => {
-      console.log(`onMounted:`);
-      console.log(lineRef.value);
-      lineRef.value.update();
-    });
-
-    onUpdated(() => {
-      console.log(`onUpdated:`);
-      console.log(lineRef.value);
-      lineRef.value.update();
-    });
-
-    return { data, metricTypes, options, lineRef };
+    return { data, metricTypes, options };
   },
 });
 </script>
