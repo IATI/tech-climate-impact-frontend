@@ -1,6 +1,9 @@
 <template>
   <h2 class="text-3xl font-serif font-bold p-4">TCI Metrics Table</h2>
-  <div class="text-gray-800">
+  <h3 v-if="daysBack > 7">
+    Table View not supported for {{ daysBack }} Days Back
+  </h3>
+  <div v-else class="text-gray-800">
     <div
       class="grid bg-gray-200 border-b-2 border-grey-500"
       :class="{
@@ -44,6 +47,7 @@ export default {
   name: "MetricTable",
   props: {
     metricData: { type: Array, default: () => [] },
+    daysBack: { type: Number, default: () => 7 },
   },
   computed: {
     metricTypes() {

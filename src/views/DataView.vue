@@ -1,6 +1,9 @@
 <template>
   <div class="flex flex-row-reverse m-2">
-    <select v-model="daysBack" class="m-2 p-1 border-grey-600 border-2 rounded">
+    <select
+      v-model.number="daysBack"
+      class="m-2 p-1 border-grey-600 border-2 rounded"
+    >
       <option value="3">3 Days Back</option>
       <option value="7">7 Days Back</option>
       <option value="30">30 Days Back</option>
@@ -11,7 +14,11 @@
       class="m-2 p-1 border-grey-600 border-2 rounded"
     />
   </div>
-  <MetricTable v-if="$route.name === 'table'" :metric-data="metricData" />
+  <MetricTable
+    v-if="$route.name === 'table'"
+    :metric-data="metricData"
+    :days-back="daysBack"
+  />
   <MetricChart
     v-if="$route.name === 'chart'"
     :metric-data="metricData"
