@@ -76,7 +76,7 @@ export default defineComponent({
         acc[type] = {
           labels: props.metricData
             .filter((data) => data.type === type)
-            .map((data) => data.endDate),
+            .map((data) => data.endDate.split("T")[0]),
           datasets: [
             {
               label: type,
