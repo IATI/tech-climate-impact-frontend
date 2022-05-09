@@ -1,18 +1,20 @@
 <template>
   <div class="flex flex-row-reverse m-2">
-    <select
-      v-model.number="daysBack"
-      class="m-2 p-1 border-grey-600 border-2 rounded"
-    >
-      <option value="3">3 Days Back</option>
-      <option value="7">7 Days Back</option>
-      <option value="30">30 Days Back</option>
-    </select>
-    <Datepicker
-      v-model="selectedDate"
-      :upper-limit="upperLimit"
-      class="m-2 p-1 border-grey-600 border-2 rounded"
-    />
+    <div class="p-2 flex border rounded-lg bg-white shadow-md">
+      <Datepicker
+        v-model="selectedDate"
+        :upper-limit="upperLimit"
+        class="m-2 p-1 border-grey-600 border-2 rounded"
+      />
+      <select
+        v-model.number="daysBack"
+        class="m-2 p-1 border-grey-600 border-2 rounded"
+      >
+        <option value="3">3 Days Back</option>
+        <option value="7">7 Days Back</option>
+        <option value="30">30 Days Back</option>
+      </select>
+    </div>
   </div>
   <MetricTable
     v-if="$route.name === 'table'"

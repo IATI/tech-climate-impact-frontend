@@ -1,11 +1,11 @@
 <template>
-  <h2 class="text-3xl font-serif font-bold p-4">TCI Metrics Table</h2>
+  <h2 class="text-3xl font-serif font-bold p-4">TCI Metrics</h2>
   <h3 v-if="daysBack > 7">
     Table View not supported for {{ daysBack }} Days Back
   </h3>
-  <div v-else class="text-gray-800">
+  <div v-else class="text-gray-800 border rounded-lg bg-white shadow-md">
     <div
-      class="grid bg-gray-200 border-b-2 border-grey-500"
+      class="grid bg-grey-200 border-b-2 border-grey-400"
       :class="{
         'grid-cols-12': dates.size === 10,
         'grid-cols-9': dates.size === 7,
@@ -21,14 +21,14 @@
     <div
       v-for="metricType in metricTypes"
       :key="metricType"
-      class="grid items-center p-4 border-b-2 border-grey-500 bg-white transition duration-300 ease-in-out hover:bg-gray-100"
+      class="grid items-center p-4 border-b-2 border-grey-400 bg-white transition duration-300 ease-in-out hover:bg-green-100"
       :class="{
         'grid-cols-12': dates.size === 10,
         'grid-cols-9': dates.size === 7,
         'grid-cols-5': dates.size === 3,
       }"
     >
-      <div class="col-span-2 mr-4 text-lg font-bold">
+      <div class="flex flex-col col-span-2 mr-4 text-lg font-bold">
         {{ metricMeta[metricType].displayName }}
         <span class="text-sm font-semibold"
           >( {{ metricMeta[metricType].unit }} )</span
@@ -81,7 +81,7 @@ export default {
 
   methods: {
     formatDate(dateStr) {
-      return format(new Date(dateStr), "dd/MM/yyyy");
+      return format(new Date(dateStr), "MMM dd");
     },
     getCellValue(date, metricType) {
       return this.metricData.reduce((acc, metric) => {
