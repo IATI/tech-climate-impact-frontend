@@ -8,11 +8,12 @@ const route = useRoute();
     class="flex justify-between items-center p-4 bg-white shadow-md"
     aria-label="Main header"
   >
-    <a href="/">
+    <a class="flex gap-2" href="/">
+      <img class="h-12" src="../assets/iati-logo-square.svg" alt="tci logo" />
       <img
-        class="h-12 mx-auto"
-        src="../assets/iati-logo-square.svg"
-        alt="tci logo"
+        class="h-12"
+        src="../assets/global-warming.png"
+        alt="global warming logo"
       />
     </a>
     <a href="/">

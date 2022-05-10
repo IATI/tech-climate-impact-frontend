@@ -3,7 +3,7 @@
   <h3 v-if="daysBack > 7">
     Table View not supported for {{ daysBack }} Days Back
   </h3>
-  <div v-else class="text-gray-800 border rounded-lg bg-white shadow-md">
+  <div v-else class="text-gray-800 border rounded-lg bg-white shadow-md mb-4">
     <div
       class="grid bg-grey-200 border-b-2 border-grey-400"
       :class="{
