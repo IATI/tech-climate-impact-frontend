@@ -5,7 +5,7 @@ const route = useRoute();
 
 <template>
   <header
-    class="flex justify-between items-center p-4 bg-white shadow-md"
+    class="flex flex-col gap-6 lg:flex-row justify-between items-center p-4 bg-white shadow-md"
     aria-label="Main header"
   >
     <a class="flex gap-2" href="/">

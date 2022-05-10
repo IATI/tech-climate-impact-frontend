@@ -2,7 +2,7 @@
   <div
     v-for="metricType in metricTypes"
     :key="metricType"
-    class="p-4 mb-4 border rounded-lg bg-white shadow-md"
+    class="p-2 md:p-4 mb-4 mx-1 border rounded-lg bg-white shadow-md"
   >
     <LineChart
       ref="lineRef"
