@@ -8,7 +8,9 @@
         :upper-limit="upperLimit"
         class="m-2 p-1 border-grey-600 border-2 rounded"
       />
+      <label for="days-back" class="hidden">Select Days Back</label>
       <select
+        id="days-back"
         v-model.number="daysBack"
         class="m-2 p-1 border-grey-600 border-2 rounded"
       >
