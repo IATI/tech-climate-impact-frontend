@@ -6,13 +6,13 @@ on:
       - "**/README.md" # don't run on README.md file updates anywhere in repo
       - "**/dependabot.yml"
     branches:
-      - notreadyyet
-  # schedule:
-  #   - cron: "27 04 * * *" # 0424am daily
+      - develop
+  schedule:
+    - cron: "13 05 * * *" # 0513am daily
 
 env:
-  STORAGE_ACCOUNT_NAME: savuetemplate # storage account name
-  AZURE_CREDENTIALS: ${{ secrets.AZURE_CREDENTIALS }}
+  STORAGE_ACCOUNT_NAME: satechclimateimpact # storage account name
+  STORAGE_ACCOUNT_KEY: ${{ secrets.STORAGE_KEY }} # storage account key
 
 jobs:
   should_run:
@@ -33,23 +33,23 @@ jobs:
 
       - name: Install dependencies
         run: |
-          npm install
+          npm install --production
 
       - name: Run build
         run: |
-          npm run build:development
-
-      - name: Login to Azure CLI
-        uses: azure/login@v1
-        with:
-          creds: ${{ env.AZURE_CREDENTIALS }}
+          npm run build:production
 
       - name: Upload to blob storage
         uses: azure/CLI@v1
         with:
-          azcliversion: latest
+          azcliversion: 2.34.0
           inlineScript: |
-            az storage blob upload-batch --account-name ${{ env.STORAGE_ACCOUNT_NAME }} --auth-mode key -d '$web' -s dist/
+            az storage blob upload-batch \
+            --overwrite true \
+            --account-name ${{ env.STORAGE_ACCOUNT_NAME }} \
+            --account-key ${{ env.STORAGE_ACCOUNT_KEY }} \
+            -d '$web' \
+            -s dist/
 
   integration-test:
     needs: deploy
@@ -60,5 +60,5 @@ jobs:
       - name: Cypress CI Run
         uses: cypress-io/github-action@v2
         with:
-          wait-on: "https://vue-template.iatistandard.org"
-          config-file: cypress/envs/cypress.development.json
+          wait-on: "https://climate.iatistandard.org"
+          config-file: cypress/envs/cypress.live.json

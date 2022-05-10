@@ -1,5 +1,5 @@
 {
-  "baseUrl": "https://vue-template.iatistandard.org",
+  "baseUrl": "https://climate.iatistandard.org",
   "fixturesFolder": "cypress/fixtures",
   "integrationFolder": "cypress/integration",
   "pluginsFile": "cypress/plugins/index.js",
