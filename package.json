@@ -3,6 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "scripts": {
+    "start": "npm run dev",
     "dev": "vite --mode development",
     "dev:production": "vite --mode production",
     "build:development": "vite build --mode development",
@@ -16,6 +17,7 @@
     "format": "prettier . --write"
   },
   "dependencies": {
+    "@heroicons/vue": "^1.0.6",
     "date-fns": "^2.28.0",
     "vue": "^3.2.33",
     "vue-chart-3": "^3.1.8",

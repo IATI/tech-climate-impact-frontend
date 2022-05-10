@@ -1,5 +1,9 @@
 <template>
-  <div v-for="metricType in metricTypes" :key="metricType">
+  <div
+    v-for="metricType in metricTypes"
+    :key="metricType"
+    class="p-4 mb-4 border rounded-lg bg-white shadow-md"
+  >
     <LineChart
       ref="lineRef"
       :chart-data="data[metricType]"
@@ -12,6 +16,7 @@
 import { computed, defineComponent } from "vue";
 import { LineChart } from "vue-chart-3";
 import { Chart, registerables } from "chart.js";
+import { format } from "date-fns";
 Chart.register(...registerables);
 
 export default defineComponent({
@@ -44,9 +49,6 @@ export default defineComponent({
         acc[type] = {
           responsive: true,
           plugins: {
-            legend: {
-              position: "top",
-            },
             title: {
               display: true,
               text: metricMeta.value[type].displayName,
@@ -57,6 +59,10 @@ export default defineComponent({
               title: {
                 display: true,
                 text: "Date",
+              },
+              grid: {
+                display: false,
+                drawBorder: false,
               },
             },
             y: {
@@ -76,13 +82,17 @@ export default defineComponent({
         acc[type] = {
           labels: props.metricData
             .filter((data) => data.type === type)
-            .map((data) => data.endDate),
+            .map((data) => format(new Date(data.endDate), "MMM dd")),
           datasets: [
             {
               label: type,
               data: props.metricData
                 .filter((data) => data.type === type)
                 .map((data) => data.value),
+              borderColor: "#4ade80",
+              backgroundColor: "#86efac",
+              fill: false,
+              tension: 0.4,
             },
           ],
         };
