@@ -1,7 +1,9 @@
 <template>
   <div class="flex flex-row-reverse m-2">
     <div class="p-2 flex border rounded-lg bg-white shadow-md">
+      <label for="date" class="hidden">Select Date</label>
       <Datepicker
+        id="date"
         v-model="selectedDate"
         :upper-limit="upperLimit"
         class="m-2 p-1 border-grey-600 border-2 rounded"
