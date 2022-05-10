@@ -33,8 +33,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          npm set-script prepare ""
-          npm install --production
+          npm install
 
       - name: Run build
         run: |
