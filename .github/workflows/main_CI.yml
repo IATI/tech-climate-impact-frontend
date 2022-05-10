@@ -1,16 +1,15 @@
-name: Build_CI_Vue_Dev
+name: Build_CI_Vue_Main
 
 on:
   pull_request:
     paths-ignore: # https://docs.github.com/en/actions/reference/workflow-syntax-for-github-actions#filter-pattern-cheat-sheet
       - "**/README.md"
       - "**/dependabot.yml"
-      - ".github/workflows/develop_CD.yml"
       - ".github/workflows/main_CD.yml"
     branches:
-      - develop
+      - main
 
-concurrency: develop_CI
+concurrency: main_CI
 
 jobs:
   build-ci:
