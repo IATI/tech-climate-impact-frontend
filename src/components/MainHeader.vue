@@ -19,6 +19,7 @@ const route = useRoute();
     <a href="/">
       <h1 class="flex justify-center text-4xl font-extrabold">
         IATI Technical Climate Impact
+        <span class="ml-2 text-sm italic text-blue-700">beta</span>
       </h1>
     </a>
     <nav class="flex">
