@@ -11,7 +11,7 @@
         class="flex gap-1"
         href="https://github.com/iati/tech-climate-impact-metrics"
         target="_blank"
-        >Metrics GitHub <ExternalLinkIcon class="h-5 w-5"
+        >Metrics GitHub<ExternalLinkIcon class="h-5 w-5"
       /></a>
       <a
         class="flex gap-1"

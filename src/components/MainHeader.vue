@@ -9,7 +9,7 @@ const route = useRoute();
     aria-label="Main header"
   >
     <a class="flex gap-2" href="/">
-      <img class="h-12" src="../assets/iati-logo-square.svg" alt="tci logo" />
+      <img class="h-12" src="../assets/iati-logo.svg" alt="tci logo" />
       <img
         class="h-12"
         src="../assets/global-warming.png"
