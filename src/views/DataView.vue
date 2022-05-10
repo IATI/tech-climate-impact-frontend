@@ -1,6 +1,8 @@
 <template>
-  <div class="flex flex-row-reverse m-2">
-    <div class="p-2 flex border rounded-lg bg-white shadow-md">
+  <div class="flex justify-center md:justify-end m-2 md:mx-0">
+    <div
+      class="p-2 flex flex-col md:flex-row border rounded-lg bg-white shadow-md"
+    >
       <label for="date" class="hidden">Select Date</label>
       <Datepicker
         id="date"
