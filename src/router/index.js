@@ -1,11 +1,12 @@
 import { createWebHistory, createRouter } from "vue-router";
 import DataView from "../views/DataView.vue";
-import MethodologyView from "../views/MethodologyView.vue";
+import DocEmbedView from "../views/DocEmbedView.vue";
 
 const routes = [
   { path: "/", name: "chart", component: DataView },
   { path: "/table", name: "table", component: DataView },
-  { path: "/methodology", name: "methodology", component: MethodologyView },
+  { path: "/methodology", name: "methodology", component: DocEmbedView },
+  { path: "/outcomes", name: "outcomes", component: DocEmbedView },
 ];
 
 const router = createRouter({

@@ -39,9 +39,17 @@ const route = useRoute();
         :class="{
           'opacity-25 cursor-not-allowed': route.path === '/methodology',
         }"
-        class="border rounded-r-md bg-green-200 hover:bg-green-400 px-4 py-2 shadow-sm"
+        class="border bg-green-200 hover:bg-green-400 px-4 py-2 shadow-sm"
         to="/methodology"
         >Methodology</router-link
+      >
+      <router-link
+        :class="{
+          'opacity-25 cursor-not-allowed': route.path === '/outcomes',
+        }"
+        class="border rounded-r-md bg-green-200 hover:bg-green-400 px-4 py-2 shadow-sm"
+        to="/outcomes"
+        >Outcomes</router-link
       >
     </nav>
   </header>
