@@ -19,6 +19,7 @@
         <option value="3">3 Days Back</option>
         <option value="7">7 Days Back</option>
         <option value="30">30 Days Back</option>
+        <option value="60">60 Days Back</option>
       </select>
     </div>
   </div>
