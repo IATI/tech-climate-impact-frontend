@@ -62,4 +62,4 @@ jobs:
         uses: cypress-io/github-action@v5
         with:
           wait-on: "https://climate.iatistandard.org"
-          config-file: cypress/envs/cypress.live.json
+          config-file: cypress/envs/cypress.live.config.js
