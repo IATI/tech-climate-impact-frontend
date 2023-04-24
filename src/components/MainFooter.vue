@@ -12,22 +12,22 @@
         class="flex justify-end gap-1 hover:underline"
         href="https://github.com/iati/tech-climate-impact-metrics"
         target="_blank"
-        >Metrics GitHub<ExternalLinkIcon class="mb-2 h-5 w-5"
+        >Metrics GitHub<ArrowTopRightOnSquareIcon class="mb-2 h-5 w-5"
       /></a>
       <a
         class="flex gap-1 hover:underline"
         href="https://github.com/iati/tech-climate-impact-frontend"
         target="_blank"
-        >Frontend GitHub<ExternalLinkIcon class="h-5 w-5"
+        >Frontend GitHub<ArrowTopRightOnSquareIcon class="h-5 w-5"
       /></a>
     </div>
   </footer>
 </template>
 
 <script>
-import { ExternalLinkIcon } from "@heroicons/vue/solid";
+import { ArrowTopRightOnSquareIcon } from "@heroicons/vue/24/outline";
 
 export default {
-  components: { ExternalLinkIcon },
+  components: { ArrowTopRightOnSquareIcon },
 };
 </script>
