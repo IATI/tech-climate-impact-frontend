@@ -17,7 +17,7 @@
     "format": "prettier . --write"
   },
   "dependencies": {
-    "@heroicons/vue": "^2.0.17",
+    "@heroicons/vue": "^2.0.18",
     "date-fns": "^2.30.0",
     "vue": "^3.2.47",
     "vue-chart-3": "^3.1.8",
