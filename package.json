@@ -26,7 +26,7 @@
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^2.3.4",
-    "autoprefixer": "^10.4.15",
+    "autoprefixer": "^10.4.16",
     "cypress": "^13.2.0",
     "eslint": "^8.49.0",
     "eslint-config-prettier": "^9.0.0",
