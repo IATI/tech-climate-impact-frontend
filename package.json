@@ -19,7 +19,7 @@
   "dependencies": {
     "@heroicons/vue": "^2.0.18",
     "date-fns": "^2.30.0",
-    "vue": "^3.3.10",
+    "vue": "^3.3.11",
     "vue-chart-3": "^3.1.8",
     "vue-router": "^4.2.5",
     "vue3-datepicker": "^0.4.0"
