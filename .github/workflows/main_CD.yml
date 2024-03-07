@@ -41,7 +41,7 @@ jobs:
           npm run build:production
 
       - name: Upload to blob storage
-        uses: azure/CLI@v1
+        uses: azure/CLI@v2
         with:
           azcliversion: 2.34.0
           inlineScript: |
